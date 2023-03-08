@@ -1,0 +1,29 @@
+{
+  "name": "chat_bot_ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"node app",
+    "dev":"nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udinesia325/chat_bot_ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/udinesia325/chat_bot_ai/issues"
+  },
+  "homepage": "https://github.com/udinesia325/chat_bot_ai#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "openai": "^3.2.1",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
