@@ -38,13 +38,13 @@ body{
 /* bagian chat */
 .chat-container{
     width: 100%;
+    max-width: 500px;
     min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     gap: 1em;
-    margin-top: 4em;
-    margin-bottom: 2em;
+    margin: 4em auto 2em auto;
     padding: 1em .3em;
 }
 .chat-container .chat-bubble{
@@ -107,6 +107,7 @@ body{
     right: 0;
     background-color: white;
     display: flex;
+    justify-content: center;
     gap:0;
 }
 .input-section input {
