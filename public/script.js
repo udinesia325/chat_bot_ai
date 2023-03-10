@@ -18,11 +18,16 @@ form.addEventListener("submit", (event) => {
     generateChatBubble(input.value)
     // bersihkan input
     input.value = ""
+    // tampilkan loading
+    generateLoader()
+    scrollDown()
 })
 
 socket.on("response_success", response => {
     if (response.length) {
         generateChatBubble(response[0].text, "bot")
+        removeLoader()
+        scrollDown()
     }
 })
 
@@ -36,4 +41,23 @@ const generateChatBubble = (text = "", type = "user") => {
     div.classList.add("chat-bubble", type)
     div.innerText = text.replace(/\r?\n|\r/g, "");
     chatContainer.appendChild(div)
+}
+const generateLoader = () => {
+    const div = document.createElement("div")
+    div.classList.add("chat-processing")
+    div.innerHTML = `
+    <span></span>
+    <span></span>
+    <span></span>
+    `
+    chatContainer.appendChild(div)
+}
+const removeLoader = () => {
+    const loaders = chatContainer.querySelectorAll(".chat-processing")
+    for (const loader of loaders) {
+        loader.remove()
+    }
+}
+const scrollDown = () => {
+    window.scrollTo(0, document.body.scrollHeight)
 }

@@ -11,6 +11,10 @@
     --gradient-2:linear-gradient(45deg, rgba(189,157,234,1) 0%, rgba(161,99,247,1) 100%);
 }
 
+body{
+    overflow-x: hidden;
+}
+
 .header{
     position: fixed;
     z-index: 5;
@@ -34,22 +38,27 @@
 /* bagian chat */
 .chat-container{
     width: 100%;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
-    gap: 1em;
     justify-content: flex-end;
-    height: 90vh;
-    overflow-y: auto;
-    padding:2em .5em;
+    gap: 1em;
+    margin-top: 4em;
+    margin-bottom: 2em;
+    padding: 1em .3em;
 }
 .chat-container .chat-bubble{
     border-radius: 10px;
     min-width: 300px;
-    width: 50%;
+    width: min-content;
     max-width: 450px;
     padding: .4em .3em;
     color: white;
     box-shadow: 0px 1em 1em #eee;
+    word-wrap: break-word;
+}
+.chat-container .chat-bubble:last-child{
+    margin-bottom: 2em;
 }
 .chat-container .chat-bubble.bot {
     background: var(--gradient-2);
@@ -58,7 +67,35 @@
     background: var(--gradient-1);
     margin-left: auto;
     text-align: right;
+    padding-right: 1.3em;
+}
+/* untuk animasi loading */
+.chat-container .chat-processing {
+    width:200px;
+    height: 30px;
+    margin: 0 auto;
+    display: flex;
+    gap: .3em;
+    align-items: center;
+    justify-content: center;
+}
+.chat-container .chat-processing span {
+    width: 10px;
+    height: 10px;
+    display: block;
+    background-color: #ccc;
+    border-radius: 50%;
+    
+}
 
+.chat-container .chat-processing span:nth-child(1) {
+    animation: ping 1s linear infinite ;
+}
+.chat-container .chat-processing span:nth-child(2) {
+    animation: ping 1.2s linear infinite ;
+}
+.chat-container .chat-processing span:nth-child(3) {
+    animation: ping 1.3s linear infinite ;
 }
 
 .input-section {
@@ -92,4 +129,14 @@
     border-radius:0 8px 8px 0;
     border: 1px solid #eee;
     border-left: none;
+}
+@keyframes ping {
+    0%,100%{
+        transform: scale(0);
+        background-color: #fff;
+    }
+    50%{
+        transform: scale(1);
+        background-color: #ccc;
+    }
 }
